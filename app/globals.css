@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+:root {
+  /* Paper & ink */
+  --paper: #ECE3CE;
+  --paper-dark: #DFD2AC;
+  --paper-darker: #CFC093;
+  --ink: #211C13;
+  --ink-soft: #4A4335;
+
+  /* Case-file accents */
+  --oxblood: #9C3226;
+  --oxblood-dark: #7A2018;
+  --ledger-green: #4B5D45;
+  --ledger-green-dark: #37432F;
+  --brass: #A07A25;
+  --hairline: #B7AA85;
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-body: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-dark: var(--paper-dark);
+  --color-paper-darker: var(--paper-darker);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-oxblood: var(--oxblood);
+  --color-oxblood-dark: var(--oxblood-dark);
+  --color-ledger: var(--ledger-green);
+  --color-ledger-dark: var(--ledger-green-dark);
+  --color-brass: var(--brass);
+  --color-hairline: var(--hairline);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+  --font-body: var(--font-body);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--paper);
+  background-image:
+    repeating-linear-gradient(0deg, rgba(33,28,19,0.025) 0px, rgba(33,28,19,0.025) 1px, transparent 1px, transparent 3px);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+::selection {
+  background: var(--oxblood);
+  color: var(--paper);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--oxblood);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.hairline {
+  border-color: var(--hairline);
+}
+
+.folder-tab {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+.stamp {
+  transform: rotate(-6deg);
+  border: 3px solid currentColor;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  position: relative;
+}
+.stamp::before {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 1px solid currentColor;
+  border-radius: 10px;
+  opacity: 0.5;
+}
+
+@keyframes stamp-in {
+  0% { opacity: 0; transform: rotate(-6deg) scale(2.2); }
+  60% { opacity: 1; transform: rotate(-6deg) scale(0.94); }
+  100% { opacity: 1; transform: rotate(-6deg) scale(1); }
+}
+.stamp-animate {
+  animation: stamp-in 0.5s cubic-bezier(.2,.8,.3,1) both;
+}
+
+.ledger-row + .ledger-row {
+  border-top: 1px solid var(--hairline);
+}
+
+textarea, input, select {
+  background: var(--paper);
+}
+
+textarea:focus, input:focus, select:focus {
+  background: #F5EED9;
+}
