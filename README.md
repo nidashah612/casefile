@@ -1,6 +1,6 @@
 # Casefile — a pocket case strategist for everyday disputes
 
-**Live app:** [casefile-theta.vercel.app](https://casefile-theta.vercel.app)
+**Live app:** https://casefile-theta.vercel.app/login
 **GitHub repo:** [github.com/nidashah612/casefile](https://github.com/nidashah612/casefile)
 
 ## a. What it is, and who it's for
