@@ -1,6 +1,6 @@
 # Casefile — a pocket case strategist for everyday disputes
 
-**Live app:** https://casefile-theta.vercel.app/login
+**Live app:** (https://casefile-theta.vercel.app/signup)
 **GitHub repo:** [github.com/nidashah612/casefile](https://github.com/nidashah612/casefile)
 
 ## a. What it is, and who it's for
@@ -33,7 +33,7 @@ in the situation than they do.
 
 ## b. Live URL
 
-👉 **[https://casefile-theta.vercel.app](https://casefile-theta.vercel.app)**
+👉 **https://casefile-theta.vercel.app/signup**
 
 Sign up for a free account to try it — your cases are private to your
 account and saved to a real database, so they're there whenever you log
