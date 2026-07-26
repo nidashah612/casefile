@@ -133,32 +133,32 @@ everything independently.
 ## f. Screenshots
 
 **Sign up** — creating an account (email + password, at least 8 characters).
-![Sign up](./docs/screenshot-signup.png)
+![Sign up](./screenshots/screenshot-signup.png)
 
 **Home — your filing cabinet** — every case you've opened, saved to your account.
-![Home — filing cabinet](./docs/screenshot-home.png)
+![Home — filing cabinet](./screenshots/screenshot-home.png)
 
 **Opening a case** — the intake form: what happened, who's involved, what you want.
-![New case intake](./docs/screenshot-new-case.png)
+![New case intake](./screenshots/screenshot-new-case.png)
 
 **Overview — the AI's read on your case** — strength rating, summary, specific
 evidence to gather, and a recommended first action.
-![Case overview with AI stamp](./docs/screenshot-overview.png)
+![Case overview with AI stamp](./screenshots/screenshot-overview.png)
 
 **Strategy — the escalation ladder and chat** — move through each stage and ask
 the strategist for advice or a drafted document.
-![Strategy tab — ladder and chat](./docs/screenshot-strategy.png)
+![Strategy tab — ladder and chat](./screenshots/screenshot-strategy.png)
 
 **Resources — finding real help** — the AI runs a live, grounded web search for
 lawyers and authorities relevant to the case, with a clear disclaimer to verify
 independently.
-![Resources tab](./docs/screenshot-resources.png)
+![Resources tab](./screenshots/screenshot-resources.png)
 
 **Timeline** — log dated entries as the case progresses, building a paper trail.
-![Timeline tab](./docs/screenshot-timeline.png)
+![Timeline tab](./screenshots/screenshot-timeline.png)
 
 **Documents** — save any AI-drafted reply here to view full-screen or copy and send.
-![Documents tab](./docs/screenshot-documents.png)
+![Documents tab](./screenshots/screenshot-documents.png)
 
 ## g. How to run this project
 
