@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
-import { saveCase, newId } from "@/lib/storage";
+import { createCase, newId } from "@/lib/storage";
 
 const CATEGORIES = [
   "Landlord / rental",
@@ -64,8 +64,8 @@ export default function NewCase() {
         chatByStage: {},
         documents: [],
       };
-      saveCase(caseObj);
-      router.push(`/case/${id}`);
+      const saved = await createCase(caseObj);
+      router.push(`/case/${saved.id}`);
     } catch (err) {
       setError(err.message);
       setLoading(false);

@@ -9,7 +9,7 @@ export default function Home() {
   const [cases, setCases] = useState(null);
 
   useEffect(() => {
-    setCases(listCases());
+    listCases().then(setCases);
   }, []);
 
   return (
@@ -35,8 +35,8 @@ export default function Home() {
           <div className="border-2 border-dashed border-hairline rounded-sm p-10 text-center">
             <p className="font-display text-xl mb-2">No cases open yet.</p>
             <p className="text-ink-soft mb-6">
-              Every case file lives only on this device — nothing is stored on
-              a server except what's needed to talk to the AI.
+              Your cases are saved to your account, so they're here whenever
+              you log back in — from any device.
             </p>
             <Link
               href="/new"

@@ -1,9 +1,15 @@
 import { NextResponse } from "next/server";
+import { auth } from "@/auth";
 import { generateContent, stripJsonFence } from "@/lib/gemini";
 import { CASE_ANALYST_SYSTEM_PROMPT } from "@/lib/prompts";
 
 export async function POST(req) {
   try {
+    const session = await auth();
+    if (!session?.user?.id) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const { title, category, counterpart, location, description, wants } =
       await req.json();
 

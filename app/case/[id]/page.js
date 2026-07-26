@@ -7,9 +7,10 @@ import EscalationLadder from "@/components/EscalationLadder";
 import ChatPanel from "@/components/ChatPanel";
 import Timeline from "@/components/Timeline";
 import Documents from "@/components/Documents";
+import Resources from "@/components/Resources";
 import { getCase, saveCase, deleteCase, newId } from "@/lib/storage";
 
-const TABS = ["Overview", "Strategy", "Timeline", "Documents"];
+const TABS = ["Overview", "Strategy", "Resources", "Timeline", "Documents"];
 
 export default function CaseDetail() {
   const { id } = useParams();
@@ -19,20 +20,21 @@ export default function CaseDetail() {
   const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
-    const found = getCase(id);
-    if (!found) {
-      setNotFound(true);
-    } else {
+    getCase(id).then((found) => {
+      if (!found) {
+        setNotFound(true);
+        return;
+      }
       if (!found.chatByStage) found.chatByStage = {};
       if (!found.documents) found.documents = [];
       setC(found);
-    }
+    });
   }, [id]);
 
   function update(patch) {
     setC((prev) => {
       const next = { ...prev, ...patch };
-      saveCase(next);
+      saveCase(next).catch(() => {});
       return next;
     });
   }
@@ -42,10 +44,10 @@ export default function CaseDetail() {
       <>
         <Header />
         <main className="flex-1 max-w-2xl mx-auto px-6 py-16 text-center">
-          <p className="font-display text-2xl mb-2">Case not found on this device.</p>
+          <p className="font-display text-2xl mb-2">Case not found.</p>
           <p className="text-ink-soft">
-            Case files live in this browser's storage. If you opened this link
-            on a different device, the case won't be there.
+            Either it was deleted, or it belongs to a different account than
+            the one you're logged into.
           </p>
         </main>
       </>
@@ -166,6 +168,8 @@ export default function CaseDetail() {
           </div>
         )}
 
+        {tab === "Resources" && <Resources caseFile={c} onUpdate={update} />}
+
         {tab === "Timeline" && (
           <Timeline
             entries={c.timeline}
@@ -177,9 +181,9 @@ export default function CaseDetail() {
 
         <div className="mt-16 pt-6 border-t border-hairline">
           <button
-            onClick={() => {
+            onClick={async () => {
               if (confirm("Delete this case? This can't be undone.")) {
-                deleteCase(c.id);
+                await deleteCase(c.id);
                 router.push("/");
               }
             }}

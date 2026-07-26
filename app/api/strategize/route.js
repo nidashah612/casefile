@@ -1,9 +1,15 @@
 import { NextResponse } from "next/server";
+import { auth } from "@/auth";
 import { generateContent } from "@/lib/gemini";
 import { STRATEGIST_CHAT_SYSTEM_PROMPT } from "@/lib/prompts";
 
 export async function POST(req) {
   try {
+    const session = await auth();
+    if (!session?.user?.id) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const { caseFile, stage, history, message } = await req.json();
 
     if (!message || !message.trim()) {
