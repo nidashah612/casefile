@@ -1,3 +1,6 @@
+if (!process.env.AUTH_SECRET) {
+  process.env.AUTH_SECRET = "casefile_default_development_auth_secret_2026";
+}
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
